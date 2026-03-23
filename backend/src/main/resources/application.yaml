@@ -10,10 +10,18 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
 
 openclaw:
   api:
     key: ${OPENCLAW_API_KEY:your-openclaw-key}
+
+discord:
+  webhook:
+    url: ${DISCORD_WEBHOOK_URL:}
 
 server:
   port: 8080

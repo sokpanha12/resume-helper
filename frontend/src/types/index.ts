@@ -6,6 +6,8 @@ export interface Job {
   description: string;
   url: string;
   postedAt: string;
+  matchScore?: number;
+  matchExplanation?: string;
 }
 
 export interface Resume {

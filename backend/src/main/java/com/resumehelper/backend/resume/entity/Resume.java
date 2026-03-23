@@ -14,7 +14,6 @@ public class Resume {
     private String fileName;
     private String fileType;
 
-    @Lob
     @Column(columnDefinition = "BYTEA")
     private byte[] data;
 

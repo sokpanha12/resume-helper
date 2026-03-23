@@ -3,6 +3,7 @@ package com.resumehelper.backend.job.service;
 import com.resumehelper.backend.job.entity.Job;
 import com.resumehelper.backend.job.repository.JobRepository;
 import com.resumehelper.backend.job.scraper.JobScraper;
+import com.resumehelper.backend.notification.NotificationService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -16,13 +17,15 @@ class JobServiceTest {
 
     private JobRepository jobRepository;
     private JobScraper scraper;
+    private NotificationService notificationService;
     private JobService jobService;
 
     @BeforeEach
     void setUp() {
         jobRepository = mock(JobRepository.class);
         scraper = mock(JobScraper.class);
-        jobService = new JobService(jobRepository, List.of(scraper));
+        notificationService = mock(NotificationService.class);
+        jobService = new JobService(jobRepository, List.of(scraper), notificationService);
     }
 
     @Test

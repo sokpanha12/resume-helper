@@ -25,9 +25,27 @@ public class OpenClawService {
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     public String generateCoverLetter(String resumeText, String jobDescription) {
-        try {
-            String prompt = buildPrompt(resumeText, jobDescription);
+        return callOpenAi(buildPrompt(resumeText, jobDescription));
+    }
 
+    public String rankResumeAgainstJob(String resumeText, String jobDescription) {
+        String prompt = """
+                Compare the resume and job description below. 
+                Return a JSON object with:
+                1. "score": an integer 0-100 representing how well the candidate fits.
+                2. "explanation": a 1-sentence explanation.
+
+                RESUME:
+                %s
+
+                JOB DESCRIPTION:
+                %s
+                """.formatted(resumeText, jobDescription);
+        return callOpenAi(prompt);
+    }
+
+    private String callOpenAi(String prompt) {
+        try {
             ObjectNode body = objectMapper.createObjectNode();
             body.put("model", MODEL);
             body.put("max_tokens", 800);
@@ -53,10 +71,8 @@ public class OpenClawService {
             JsonNode json = objectMapper.readTree(response.body());
             return json.at("/choices/0/message/content").asText();
 
-        } catch (RuntimeException e) {
-            throw e;
         } catch (Exception e) {
-            throw new RuntimeException("Failed to generate cover letter", e);
+            throw new RuntimeException("Failed to call OpenAI API", e);
         }
     }
 

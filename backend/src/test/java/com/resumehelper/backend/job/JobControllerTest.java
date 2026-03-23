@@ -2,6 +2,8 @@ package com.resumehelper.backend.job;
 
 import com.resumehelper.backend.job.controller.JobController;
 import com.resumehelper.backend.job.service.JobService;
+import com.resumehelper.backend.resume.service.ResumeService;
+import com.resumehelper.backend.coverletter.service.OpenClawService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -22,6 +24,12 @@ class JobControllerTest {
 
     @MockBean
     private JobService jobService; // Controller dependency
+
+    @MockBean
+    private ResumeService resumeService;
+
+    @MockBean
+    private OpenClawService openClawService;
 
     @Test
     void testGetAllJobsEndpoint() throws Exception {

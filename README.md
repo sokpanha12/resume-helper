@@ -217,20 +217,43 @@ flowchart TD
 ### Best Practices
 
 - Monorepo for simplicity
-
 - Docker Compose for environment consistency
-
 - Automated CI/CD with tests on every commit/PR
-
 - Environment variables for API keys & DB credentials
 
-- Follow Test-Driven Development (TDD) mindset
+---
 
-- Branching strategy: main, dev, feature/*
+## Getting Started
 
-- Logging and monitoring for backend
+### Prerequisites
+- Docker & Docker Compose
+- Java 17 (for local backend development)
+- Node.js 20 (for local frontend development)
+- OpenAI API Key (for AI features)
+- Discord Webhook URL (for notifications)
 
-- Review AI-generated letters before sending
+### Environment Setup
+1. **Backend**: Create/edit `backend/src/main/resources/application.yaml`:
+   ```yaml
+   openclaw:
+     api:
+       key: your_openai_api_key
+   discord:
+     webhook:
+       url: your_discord_webhook_url
+   ```
+2. **Docker**: Set environment variables in your shell or a `.env` file:
+   ```env
+   OPENCLAW_API_KEY=your_openai_api_key
+   DISCORD_WEBHOOK_URL=your_discord_webhook_url
+   ```
+
+### Running the Project
+```bash
+docker-compose up --build
+```
+- Frontend: http://localhost:3000
+- Backend: http://localhost:8080
 
 ---
 

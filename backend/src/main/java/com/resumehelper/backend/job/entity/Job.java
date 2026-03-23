@@ -21,6 +21,10 @@ public class Job {
     private String url;
     private LocalDateTime postedAt;
 
+    private Integer matchScore; // 0-100
+    @Column(columnDefinition = "TEXT")
+    private String matchExplanation;
+
     // Constructors
     public Job() {}
 
@@ -47,4 +51,9 @@ public class Job {
     public void setUrl(String url) { this.url = url; }
     public LocalDateTime getPostedAt() { return postedAt; }
     public void setPostedAt(LocalDateTime postedAt) { this.postedAt = postedAt; }
+
+    public Integer getMatchScore() { return matchScore; }
+    public void setMatchScore(Integer matchScore) { this.matchScore = matchScore; }
+    public String getMatchExplanation() { return matchExplanation; }
+    public void setMatchExplanation(String matchExplanation) { this.matchExplanation = matchExplanation; }
 }
