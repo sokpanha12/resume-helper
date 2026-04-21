@@ -1,0 +1,13 @@
+node_modules/
+dist/
+.git/
+.gitignore
+*.md
+.env
+.idea/
+.vscode/
+Dockerfile
+# Keep build config files:
+# eslint.config.js
+# tsconfig*.json
+# vite.config.ts
